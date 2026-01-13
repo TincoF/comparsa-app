@@ -11,7 +11,7 @@ import FooterComponent from './footer/footer.component';
     <div class="min-h-screen flex flex-col">
       <app-header />
 
-      <main class="flex-1 p-4">
+      <main class="flex-1 md:p-4">
         <router-outlet />
       </main>
 

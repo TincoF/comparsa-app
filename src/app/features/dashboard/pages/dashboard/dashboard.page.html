@@ -1,28 +1,22 @@
-<div class="gap-4 max-w-6xl mx-auto mt-8">
+<div class="gap-4 max-w-6xl mx-auto md:mt-8">
   <div class="card bg-neutral shadow-sm mb-6 w-full">
     <div class="flex flex-col lg:flex-row">
       <!-- Imagen -->
       <figure class="lg:w-1/2 w-full">
-        <img
-          src="/img/pareja.png"
-          alt="Album"
-          class="md:h-96 h-80 object-cover p-10"
-        />
+        <img src="/img/pareja.png" alt="Album" class="md:h-96 h-80 object-cover p-10" />
       </figure>
 
       <!-- Contenido -->
-      <div
-        class="lg:w-1/2 w-full flex flex-col justify-center items-center text-center gap-3 p-8"
-      >
-        <h2 class="card-title">Asociación comparsa LEGADO</h2>
+      <div class="lg:w-1/2 w-full flex flex-col justify-center items-center text-center gap-3 p-8 pt-0">
+        <img class="h-28" src="/img/logoRojo.png" alt="">
 
 
         <a href="/integrantes/nuevo" class="btn btn-soft btn-primary mt-2">Nuevo Integrante</a>
       </div>
     </div>
   </div>
-
-  <div class="grid-cols-1 grid md:grid-cols-3 gap-6">
+<div class="hidden md:block">
+  <div class="grid-cols-1 md:grid-cols-3 gap-6 grid">
     <div class="card lg:card-side bg-info shadow-sm">
       <div class="card-body items-center text-center">
         <h2 class="card-title">Integrantes</h2>
@@ -63,4 +57,17 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="block md:hidden ">
+  <div class="flex flex-col gap-2">
+
+    <a href="/integrantes" class="btn btn-info">Ver Integrantes</a>
+    <button class="btn btn-success">Aportes</button>
+    <button class="btn btn-accent">Pasar lista</button>
+
+  </div>
+</div>
+
+
 </div>
