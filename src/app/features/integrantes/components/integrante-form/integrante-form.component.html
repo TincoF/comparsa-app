@@ -1,0 +1,107 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="card bg-white shadow-md">
+    <div class="card-body gap-6">
+      <div>
+        <h2 class="font-semibold mb-3">Datos personales</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" placeholder="Nombres" class="input input-bordered w-full" formControlName="nombres" />
+          <input type="text" placeholder="Apellidos" class="input input-bordered w-full" formControlName="apellidos" />
+          <input type="date" class="input input-bordered w-full" formControlName="cumpleanos" />
+          <input type="tel" placeholder="Celular" class="input input-bordered w-full" formControlName="celular" />
+          <select class="select select-bordered w-full" formControlName="sexo">
+            <option value="">Selecciona sexo</option>
+            <option value="M">Varón</option>
+            <option value="F">Mujer</option>
+          </select>
+
+        </div>
+      </div>
+      <!-- Rol -->
+      <div>
+        <h2 class="font-semibold mb-3">Rol en la comparsa</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <select class="select select-bordered w-full" formControlName="rol">
+            <option value="" disabled>Selecciona un rol</option>
+            @if (!esVaron) {
+            <option value="Bailarina">Bailarina</option>
+            }
+            <option value="Chilquino">Chilquino</option>
+            <option value="Músico">Músico</option>
+            <option value="Capitan">Capitan</option>
+            <option value="Otro">Otro</option>
+          </select>
+          <select class="select select-bordered w-full" formControlName="socio">
+            <option value="" selected disabled>Es socio</option>
+            <option [ngValue]="true">Si</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+      @if (mostrarMusico) {
+      <div>
+        <h2 class="font-semibold mb-3">Musico</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <select class="select select-bordered w-full" formControlName="instrumento">
+            <option value="" disabled>Selecciona un Instrumento</option>
+            <option value="Quena">Quena</option>
+            <option value="Guitarra">Guitarra</option>
+            <option value="Tinya">Tinya</option>
+            <option value="Otro">Otro</option>
+          </select>
+          <select class="select select-bordered w-full" formControlName="musicoPagado">
+            <option value="" disabled>Es musico pagado</option>
+            <option [ngValue]="true">Si</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </div>
+      </div>
+      }
+      <div>
+        <h2 class="font-semibold  mb-3">Tallas</h2>
+        <div formGroupName="tallas" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <input class="input input-bordered" placeholder="Polo" formControlName="polo" />
+          @if (mostrarTallasMasculinas) {
+
+          <input class="input input-bordered" placeholder="Camisa-Blusa" formControlName="camisa" />}
+          @if (mostrarTallasFemeninas) {
+
+          <input type="text" class="input input-bordered" placeholder="Talla Blusa" formControlName="blusa" />
+          <input class="input input-bordered" placeholder="Falda" formControlName="falda" />
+          <input class="input input-bordered" placeholder="Cintura" formControlName="cintura" />
+          }
+        </div>
+      </div>
+      <!-- Vestuario -->
+      <div>
+        <h2 class="font-semibold mb-3">¿Alquila vestuario?</h2>
+        <select class="select select-bordered w-full" formControlName="alquilaVestuario">
+          <option [ngValue]="false">No</option>
+          <option [ngValue]="true">Sí</option>
+        </select>
+      </div>
+      @if (mostrarAlquiler) {
+      <div formGroupName="alquiler">
+        <h2 class="font-semibold mb-3">Detalles de alquiler</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" placeholder="Nombre garante" class="input input-bordered w-full" formControlName="garante" />
+          <input type="text" placeholder="DNI" class="input input-bordered w-full" formControlName="dni" />
+          <input type="text" placeholder="direccion" class="input input-bordered w-full" formControlName="direccion" />
+          <input type="text" placeholder="Detalles" class="input input-bordered w-full" formControlName="detalles" />
+        </div>
+      </div>
+      }
+      <div>
+        <h2 class="font-semibold mb-3">Observaciones</h2>
+        <div class="">
+          <textarea placeholder="Observaciones" class="input input-bordered w-full"
+            formControlName="observaciones"></textarea>
+        </div>
+      </div>
+      <!-- Acciones -->
+      <div class="card-actions justify-end mt-4">
+        <button class="btn btn-ghost" type="button" (click)="cancelar()">Cancelar</button>
+        <button class="btn btn-primary" type="submit">Guardar integrante</button>
+      </div>
+    </div>
+  </div>
+</form>
