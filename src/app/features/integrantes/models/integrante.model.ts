@@ -11,11 +11,11 @@ export interface Integrante {
   rol: 'Bailarina' | 'Chilquino' | 'Músico' | 'Capitan' | 'Otro';
   socio: boolean;
   celular: string;
-  cumpleanos: string;
+  cumpleanos?: string | null;
   foto?: string;
 
   instrumento?: 'Quena'|'Guitarra'|'Tinya'|'Otro'|null;
-  musicoPagado?: boolean | null;
+  musico_pagado?: boolean | null;
 
   tallas: Talla;
 
@@ -23,7 +23,7 @@ export interface Integrante {
 
   pagos?: Pago[];
 
-  alquilaVestuario: boolean;
+  alquila_vestuario: boolean;
 
   alquiler?: Alquiler | null;
 

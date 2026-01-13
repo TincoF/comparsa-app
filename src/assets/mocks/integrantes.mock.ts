@@ -17,7 +17,7 @@ export const integrantes: Integrante[] = [
       "camisa": null,
       "cintura": 68
     },
-    "alquilaVestuario": true,
+    "alquila_vestuario": true,
     "alquiler": {
       "garante": "Juan Huamán",
       "dni": "99658965",
@@ -43,7 +43,7 @@ export const integrantes: Integrante[] = [
       "camisa": null,
       "cintura": 64
     },
-    "alquilaVestuario": false,
+    "alquila_vestuario": false,
     "asistencia": null,
     "pagos": []
   },
@@ -63,7 +63,7 @@ export const integrantes: Integrante[] = [
       "camisa": null,
       "cintura": 72
     },
-    "alquilaVestuario": true,
+    "alquila_vestuario": true,
     "alquiler": {
       "garante": "María Apaza",
       "dni": "44556677",
@@ -89,7 +89,7 @@ export const integrantes: Integrante[] = [
       "camisa": "M",
       "cintura": 80
     },
-    "alquilaVestuario": false,
+    "alquila_vestuario": false,
     "asistencia": null,
     "pagos": []
   },
@@ -109,7 +109,7 @@ export const integrantes: Integrante[] = [
       "camisa": "L",
       "cintura": 86
     },
-    "alquilaVestuario": false,
+    "alquila_vestuario": false,
     "asistencia": null,
     "pagos": []
   },
@@ -129,7 +129,7 @@ export const integrantes: Integrante[] = [
       "camisa": null,
       "cintura": 70
     },
-    "alquilaVestuario": true,
+    "alquila_vestuario": true,
     "alquiler": {
       "garante": "Pedro Flores",
       "dni": "77889900",
@@ -156,7 +156,7 @@ export const integrantes: Integrante[] = [
       "cintura": 62
     },
 
-    "alquilaVestuario": false,
+    "alquila_vestuario": false,
     "asistencia": null,
     "pagos": []
   },
@@ -176,7 +176,7 @@ export const integrantes: Integrante[] = [
       "camisa": "L",
       "cintura": 84
     },
-    "alquilaVestuario": false,
+    "alquila_vestuario": false,
     "asistencia": null,
     "pagos": []
   },
@@ -196,7 +196,7 @@ export const integrantes: Integrante[] = [
       "camisa": null,
       "cintura": 69
     },
-    "alquilaVestuario": true,
+    "alquila_vestuario": true,
     "alquiler": {
       "garante": "Luis Rojas",
       "dni": "11223344",
@@ -222,7 +222,7 @@ export const integrantes: Integrante[] = [
       "camisa": "XL",
       "cintura": 90
     },
-    "alquilaVestuario": false,
+    "alquila_vestuario": false,
     "asistencia": null,
     "pagos": []
   },
@@ -242,7 +242,7 @@ export const integrantes: Integrante[] = [
       "camisa": null,
       "cintura": 66
     },
-    "alquilaVestuario": false,
+    "alquila_vestuario": false,
     "asistencia": null,
     "pagos": []
   },
@@ -263,7 +263,7 @@ export const integrantes: Integrante[] = [
       "camisa": "M",
       "cintura": 82
     },
-    "alquilaVestuario": false,
+    "alquila_vestuario": false,
     "asistencia": null,
     "pagos": []
   }

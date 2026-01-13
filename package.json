@@ -19,6 +19,7 @@
     "@angular/router": "^19.2.0",
     "@ng-icons/core": "^28.1.0",
     "@ng-icons/heroicons": "^28.1.0",
+    "@supabase/supabase-js": "^2.90.1",
     "@tailwindcss/postcss": "^4.1.18",
     "daisyui": "^5.5.14",
     "postcss": "^8.5.6",

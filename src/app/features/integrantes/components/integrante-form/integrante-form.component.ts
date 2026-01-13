@@ -37,13 +37,13 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
       const data = this.integrante();
       if (data) {
         this.form.reset();
-        // Patch todos los valores juntos, incluyendo alquiler y alquilaVestuario
+        // Patch todos los valores juntos, incluyendo alquiler y alquila_vestuario
         this.form.patchValue({
           ...data,
-          alquilaVestuario: !!data.alquilaVestuario,
+          alquila_vestuario: !!data.alquila_vestuario,
         });
         // Patch explícito del grupo alquiler si corresponde
-        if (data.alquilaVestuario && data.alquiler) {
+        if (data.alquila_vestuario && data.alquiler) {
           this.form.get('alquiler')?.patchValue(data.alquiler);
         } else {
           this.form.get('alquiler')?.reset();
@@ -64,7 +64,7 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
       rol: ['Bailarina'],
       socio: [false],
       instrumento: [''],
-      musicoPagado: [false],
+      musico_pagado: [false],
       observaciones: [''],
       tallas: this.fb.group({
         polo: [''],
@@ -73,7 +73,7 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
         cintura: [''],
         blusa: [''],
       }),
-      alquilaVestuario: [false], // booleano, igual que en el mock
+      alquila_vestuario: [false], // booleano, igual que en el mock
       alquiler: this.fb.group({
         garante: [''],
         dni: [''],
@@ -89,7 +89,7 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
         this.form.patchValue({
           rol: 'Bailarina',
           instrumento: null,
-          musicoPagado: null
+          musico_pagado: null
         });
       }
     });
@@ -100,7 +100,7 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
       if (rol === 'Capitan' || rol === 'Chilquino') {
         this.form.patchValue({
           instrumento: null,
-          musicoPagado: null
+          musico_pagado: null
         });
       }
     });
@@ -120,7 +120,7 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
   }
 
   get mostrarAlquiler() {
-    return this.form.get('alquilaVestuario')?.value === true;
+    return this.form.get('alquila_vestuario')?.value === true;
   }
 
   get mostrarTallasFemeninas() {
@@ -140,8 +140,8 @@ submit() {
     ...(this.integrante() ?? {}),
     ...raw,
     socio: raw.socio === true || raw.socio === 'si',
-    musicoPagado: raw.musicoPagado === true || raw.musicoPagado === 'si',
-    alquiler: raw.alquilaVestuario ? raw.alquiler : null,
+    musico_pagado: raw.musico_pagado === true || raw.musico_pagado === 'si',
+    alquiler: raw.alquila_vestuario ? raw.alquiler : null,
   };
   this.save.emit(data);
 }
