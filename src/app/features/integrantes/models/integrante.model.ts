@@ -8,7 +8,7 @@ export interface Integrante {
   nombres: string;
   apellidos: string;
   sexo: 'F' | 'M';
-  rol: 'Bailarina' | 'Chilquino' | 'Músico' | 'Capitan' | 'Otro';
+  rol: 'Bailarina' | 'Chilquino' | 'Músico' | 'Capitan' | 'Otro' | undefined;
   socio: boolean;
   celular: string;
   cumpleanos?: string | null;

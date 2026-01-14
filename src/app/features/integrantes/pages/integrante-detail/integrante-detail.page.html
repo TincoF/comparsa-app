@@ -1,114 +1,118 @@
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-4 max-w-7xl mx-auto">
-
-  <div class="col-span-1 card border border-base-300 shadow-md rounded-lg p-12 content-center items-center space-y-4">
-    <div class="avatar">
-      <div class="w-36 md:w-48 rounded-full">
-        <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
-      </div>
-    </div>
-    <div class="text-center space-y-2">
-      <h2 class="text-gray-900 font-bold text-2xl">{{integrante()?.nombres}}</h2>
-      <h3 class="text-gray-900 font-semibold uppercase text-xl">{{integrante()?.apellidos}}</h3>
-      <div class="flex content-center gap-2 justify-center my-2">
-        @if (integrante()?.socio) {
-        <div class="badge badge-success">Socio</div>}
-        <div class="badge badge-warning">{{integrante()?.rol}}</div>
-      </div>
-      <div class="mt-4 space-y-2 flex gap-4">
-        <div class="flex items-center justify-center mb-2">
-          <svg data-slot="icon" width="20" height="20" fill="none" stroke-width="1.5" stroke="currentColor"
-            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z">
-            </path>
-          </svg>
-          <span class="ml-2 text-gray-900 font-medium">{{integrante()?.celular}}</span>
-        </div>
-        <div class="flex items-center justify-center mb-2">
-          <svg data-slot="icon" width="20" height="20" fill="none" stroke-width="1.5" stroke="currentColor"
-            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75-1.5.75a3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0L3 16.5m15-3.379a48.474 48.474 0 0 0-6-.371c-2.032 0-4.034.126-6 .371m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.169c0 .621-.504 1.125-1.125 1.125H4.125A1.125 1.125 0 0 1 3 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 0 1 6 13.12M12.265 3.11a.375.375 0 1 1-.53 0L12 2.845l.265.265Zm-3 0a.375.375 0 1 1-.53 0L9 2.845l.265.265Zm6 0a.375.375 0 1 1-.53 0L15 2.845l.265.265Z">
-            </path>
-          </svg>
-          <span class="ml-2 text-gray-900 font-medium">{{integrante()?.cumpleanos}}</span>
-        </div>
-      </div>
-    </div>
-    <div class="h-52 mt-12">
-      <img class="h-full" src="/img/niñoLegado.png" alt="">
-    </div>
+<div class="max-w-7xl mx-auto">
+  <div class=" p-4">
+    <button class="cursor-pointer" type="button" onclick="history.back()">
+      <svg data-slot="icon" fill="none" stroke-width="1.5" width="24" height="24" stroke="currentColor"
+        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+      </svg>
+    </button>
   </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-4">
+
+    <div
+      class="col-span-1 card md:border border-base-300 md:shadow-md rounded-lg md:p-12 content-center items-center space-y-4">
+      <div class="avatar">
+        <div class="w-36 md:w-48 rounded-full">
+          <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+        </div>
+      </div>
+      <div class="text-center space-y-2">
+        <h2 class="text-gray-900 font-bold text-2xl">{{integrante()?.nombres}}</h2>
+        <h3 class="text-gray-900 font-semibold uppercase text-xl">{{integrante()?.apellidos}}</h3>
+        <div class="flex content-center gap-2 justify-center my-2">
+          @if (integrante()?.socio) {
+          <div class="badge badge-accent">Socio</div>}
+          <div [ngClass]="integrante()?.rol | rolBadge">{{integrante()?.rol}}</div>
+        </div>
+        <div class="mt-4 space-y-2 flex gap-4">
+          <div class="flex items-center justify-center mb-2">
+            <svg data-slot="icon" width="20" height="20" fill="none" stroke-width="1.5" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z">
+              </path>
+            </svg>
+            <span class="ml-2 text-gray-900 font-medium">{{integrante()?.celular}}</span>
+          </div>
+          <div class="flex items-center justify-center mb-2">
+            <svg data-slot="icon" width="20" height="20" fill="none" stroke-width="1.5" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75-1.5.75a3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0L3 16.5m15-3.379a48.474 48.474 0 0 0-6-.371c-2.032 0-4.034.126-6 .371m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.169c0 .621-.504 1.125-1.125 1.125H4.125A1.125 1.125 0 0 1 3 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 0 1 6 13.12M12.265 3.11a.375.375 0 1 1-.53 0L12 2.845l.265.265Zm-3 0a.375.375 0 1 1-.53 0L9 2.845l.265.265Zm6 0a.375.375 0 1 1-.53 0L15 2.845l.265.265Z">
+              </path>
+            </svg>
+            <span class="ml-2 text-gray-900 font-medium">{{integrante()?.cumpleanos | cumpleanosCorto}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-  <div class="col-span-1 p-6">
-    <h2 class="text-xl font-bold mb-4">Detalle del Integrante</h2>
+    <div class="col-span-1 md:p-6 px-6">
+      <h2 class="text-xl font-bold mb-4">Detalles del Integrante</h2>
 
-    <!-- name of each tab group should be unique -->
-    <div class="tabs tabs-lift">
-      <input type="radio" name="my_tabs_3" class="tab" aria-label="Detalle" checked="checked" />
-      <div class="tab-content bg-base-100 border-base-300 p-6">
-        <h3 class="font-bold text-lg">Tallas</h3>
-        <ul class="list-disc list-inside">
-          @if (integrante()?.sexo === 'M') {
-          <li>Polo: {{integrante()?.tallas?.polo}} </li>
-          <li>Camisa: {{integrante()?.tallas?.camisa}}</li>
+      <!-- name of each tab group should be unique -->
+      <div class="tabs tabs-lift">
+        <input type="radio" name="my_tabs_3" class="tab" aria-label="Vestuario" checked="checked" />
+        <div class="tab-content bg-base-100 border-base-300 p-6">
+          <h3 class="font-bold text-lg">Tallas</h3>
+          <ul class="list-disc list-inside">
+            @if (integrante()?.sexo === 'M') {
+            <li>Polo: {{integrante()?.tallas?.polo}} </li>
+            <li>Camisa: {{integrante()?.tallas?.camisa}}</li>
+            }
+            @if (integrante()?.sexo === 'F') {
+            <li>Polo: {{integrante()?.tallas?.polo}} </li>
+            <li>Blusa: {{integrante()?.tallas?.blusa}}</li>
+            <li>Falda: {{integrante()?.tallas?.falda}}</li>
+            <li>Cintura: {{integrante()?.tallas?.cintura}}</li>}
+          </ul>
+          @if (integrante()?.alquila_vestuario) {
+          <h3 class="mt-4 font-bold text-lg">Alquiler de vestuario</h3>
+          <ul class="list-disc list-inside ">
+            <li>Garante: {{integrante()?.alquiler?.garante}} </li>
+            <li>DNI: {{integrante()?.alquiler?.dni}}</li>
+            <li>Direccion: {{integrante()?.alquiler?.direccion}}</li>
+            <li>Observaciones: {{integrante()?.alquiler?.detalles}}</li>
+          </ul>
           }
-          @if (integrante()?.sexo === 'F') {
-          <li>Polo: {{integrante()?.tallas?.polo}} </li>
-          <li>Blusa: {{integrante()?.tallas?.blusa}}</li>
-          <li>Falda: {{integrante()?.tallas?.falda}}</li>
-          <li>Cintura: {{integrante()?.tallas?.cintura}}</li>}
-        </ul>
-        @if (integrante()?.alquila_vestuario) {
-        <h3 class="mt-4 font-bold text-lg">Alquiler de vestuario</h3>
-        <ul class="list-disc list-inside ">
-          <li>Garante: {{integrante()?.alquiler?.garante}} </li>
-          <li>DNI: {{integrante()?.alquiler?.dni}}</li>
-          <li>Direccion: {{integrante()?.alquiler?.direccion}}</li>
-          <li>Observaciones: {{integrante()?.alquiler?.detalles}}</li>
-        </ul>
-        }
-        <h3 class="mt-4 font-bold text-lg">Observaciones</h3>
-        <p>{{integrante()?.observaciones}}</p>
+          <h3 class="mt-4 font-bold text-lg">Observaciones</h3>
+          <p>{{integrante()?.observaciones}}</p>
 
 
-      </div>
+        </div>
 
-      <input type="radio" name="my_tabs_3" class="tab" aria-label="Asistencia" />
-      <div class="tab-content bg-base-100 border-base-300 p-6">
-        Tab content 2
-      </div>
+        <input type="radio" name="my_tabs_3" class="tab" aria-label="Asistencia" />
+        <div class="tab-content bg-base-100 border-base-300 p-6">
+          Tab content 2
+        </div>
 
-      <input type="radio" name="my_tabs_3" class="tab" aria-label="Pagos" />
-      <div class="tab-content bg-base-100 border-base-300 p-6">
+        <input type="radio" name="my_tabs_3" class="tab" aria-label="Pagos" />
+        <div class="tab-content bg-base-100 border-base-300 p-6">
 
-        <h3 class="text-lg font-bold mb-4">Historial de Pagos</h3>
-        <div class="flex flex-col gap-4">
-          <div class="stats shadow">
-            <div class="stat">
-              <div class="stat-title">Concepto: </div>
-              <div class="stat-value">89,400</div>
-              <div class="stat-desc">Metodo de pago: Yape</div>
-              <div class="stat-desc">Fecha: Yape</div>
-              <div class="stat-desc">Detalle: Yape</div>
+          <h3 class="text-lg font-bold mb-4">Historial de Pagos</h3>
+          <div class="flex flex-col gap-4">
+            <div class="stats shadow">
+              <div class="stat">
+                <div class="stat-title">Concepto: </div>
+                <div class="stat-value">89,400</div>
+                <div class="stat-desc">Metodo de pago: Yape</div>
+                <div class="stat-desc">Fecha: Yape</div>
+                <div class="stat-desc">Detalle: Yape</div>
+              </div>
             </div>
-          </div>
-          <div class="stats shadow">
-            <div class="stat">
-              <div class="stat-title">Concepto: </div>
-              <div class="stat-value">89,400</div>
-              <div class="stat-desc">Metodo de pago: Yape</div>
-              <div class="stat-desc">Fecha: Yape</div>
-              <div class="stat-desc">Detalle: Yape</div>
+            <div class="stats shadow">
+              <div class="stat">
+                <div class="stat-title">Concepto: </div>
+                <div class="stat-value">89,400</div>
+                <div class="stat-desc">Metodo de pago: Yape</div>
+                <div class="stat-desc">Fecha: Yape</div>
+                <div class="stat-desc">Detalle: Yape</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-span-1 p-12">
-    <img src="/img/niñaLegado.png" alt="">
 
   </div>
-</div>

@@ -3,10 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { IntegrantesService } from '../../services/integrantes.service';
 import { CommonModule } from '@angular/common';
 import { Integrante } from '../../models/integrante.model';
+import { CumpleanosCortoPipe } from '../../../../shared/pipes/cumpleanos-corto.pipe';
+import { RolBadgePipe } from '../../../../shared/pipes/rol-badge.pipe';
 
 @Component({
   selector: 'app-integrante-detail.page',
-  imports: [CommonModule],
+  imports: [CommonModule, CumpleanosCortoPipe, RolBadgePipe],
   templateUrl: './integrante-detail.page.html',
 })
 export default class IntegranteDetailPage {
