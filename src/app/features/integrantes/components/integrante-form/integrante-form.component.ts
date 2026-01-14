@@ -37,19 +37,17 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
       const data = this.integrante();
       if (data) {
         this.form.reset();
-        // Patch todos los valores juntos, incluyendo alquiler y alquila_vestuario
         this.form.patchValue({
           ...data,
           alquila_vestuario: !!data.alquila_vestuario,
         });
-        // Patch explícito del grupo alquiler si corresponde
         if (data.alquila_vestuario && data.alquiler) {
           this.form.get('alquiler')?.patchValue(data.alquiler);
         } else {
           this.form.get('alquiler')?.reset();
         }
       } else {
-        this.form.reset(); // valores por defecto
+        this.form.reset();
       }
       this.cdr.detectChanges();
     }
@@ -73,7 +71,7 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
         cintura: [''],
         blusa: [''],
       }),
-      alquila_vestuario: [false], // booleano, igual que en el mock
+      alquila_vestuario: [false],
       alquiler: this.fb.group({
         garante: [''],
         dni: [''],
@@ -136,6 +134,7 @@ submit() {
     return;
   }
   const raw = this.form.value;
+  // Guardar cumpleaños como YYYY-MM-DD (sin recortar)
   const data: Integrante = {
     ...(this.integrante() ?? {}),
     ...raw,

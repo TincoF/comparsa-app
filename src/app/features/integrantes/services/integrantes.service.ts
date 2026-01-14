@@ -5,10 +5,23 @@ import { supabase } from '../../../core/supabase.client';
 
 const USE_SUPABASE = true;
 
+export interface OperationResult {
+  success: boolean;
+  message?: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class IntegrantesService {
 
   private integrantesSignal = signal<Integrante[]>([]);
+
+  getTotalChicas() {
+    return this.integrantesSignal().filter(i => i.sexo === 'F').length;
+  }
+
+  getTotalVarones() {
+    return this.integrantesSignal().filter(i => i.sexo === 'M').length;
+  }
 
   constructor() {
     if (USE_SUPABASE) {
@@ -18,9 +31,6 @@ export class IntegrantesService {
     }
   }
 
-  // =====================
-  // MOCK
-  // =====================
   private loadFromMock() {
     const data = localStorage.getItem('integrantes_mock');
     const list = data ? JSON.parse(data) : mockIntegrantes;
@@ -34,9 +44,6 @@ export class IntegrantesService {
     );
   }
 
-  // =====================
-  // SUPABASE
-  // =====================
   async loadFromSupabase() {
     const { data, error } = await supabase
       .from('integrantes')
@@ -50,14 +57,11 @@ export class IntegrantesService {
     this.integrantesSignal.set(data as Integrante[]);
   }
 
-  // =====================
-  // API PUBLICA
-  // =====================
   getAll() {
     return this.integrantesSignal;
   }
 
-  async create(data: Integrante) {
+  async create(data: Integrante): Promise<OperationResult> {
     const integranteConId: Integrante = {
       ...data,
       id: crypto.randomUUID(),
@@ -69,7 +73,7 @@ export class IntegrantesService {
         localStorage.setItem('integrantes_mock', JSON.stringify(updated));
         return updated;
       });
-      return;
+      return { success: true, message: 'Integrante creado exitosamente' };
     }
 
     const { error } = await supabase
@@ -78,19 +82,23 @@ export class IntegrantesService {
 
     if (error) {
       console.error('❌ Error creando integrante', error);
-      return;
+      return {
+        success: false,
+        message: `Error al crear integrante`
+      };
     }
 
-    await this.loadFromSupabase(); // 🔥 IMPORTANTE
+    await this.loadFromSupabase();
+    return { success: true, message: 'Integrante creado exitosamente' };
   }
 
-  async update(data: Integrante) {
+  async update(data: Integrante): Promise<OperationResult> {
     if (!USE_SUPABASE) {
       this.integrantesSignal.update(list =>
         list.map(i => i.id === data.id ? data : i)
       );
       this.saveMock();
-      return;
+      return { success: true, message: 'Integrante actualizado exitosamente' };
     }
 
     const { error } = await supabase
@@ -100,10 +108,14 @@ export class IntegrantesService {
 
     if (error) {
       console.error('❌ Error actualizando integrante', error);
-      return;
+      return {
+        success: false,
+        message: `Error al actualizar integrante`
+      };
     }
 
     await this.loadFromSupabase();
+    return { success: true, message: 'Integrante actualizado exitosamente' };
   }
 
   async delete(id: string) {
@@ -122,10 +134,14 @@ export class IntegrantesService {
 
     if (error) {
       console.error('❌ Error borrando integrante', error);
-      return;
+      return {
+        success: false,
+        message: `Error al borrar integrante`
+      };
     }
 
     await this.loadFromSupabase();
+    return { success: true, message: 'Integrante borrado exitosamente' };
   }
 }
 

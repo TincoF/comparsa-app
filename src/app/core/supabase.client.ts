@@ -6,7 +6,7 @@ export const supabase = createClient(
   environment.supabaseAnonKey,
 
    { auth: {
-      persistSession: false, // 🔥 IMPORTANTE
+      persistSession: false,
       autoRefreshToken: false,
       detectSessionInUrl: false
     }}

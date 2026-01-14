@@ -1,4 +1,7 @@
 <div class="p-4 max-w-7xl mx-auto">
+  <!-- Alert -->
+  <app-alert [alert]="alert()" (closeAlert)="closeAlert()" />
+
   <!-- Header -->
   <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
     <div>
@@ -7,6 +10,8 @@
         Lista de bailarines y músicos de la comparsa
       </p>
     </div>
+
+
     <div class="flex gap-2">
       <input type="text" placeholder="Buscar integrante" class="input input-bordered" [(ngModel)]="searchTerm" />
       <a href="/integrantes/nuevo" class="btn btn-primary">+ Nuevo integrante</a>
@@ -14,30 +19,38 @@
   </div>
   <div class="overflow-x-auto bg-base-100 rounded-xl shadow">
     <div class="overflow-x-auto">
-      <app-integrante-table [listIntegrantes]="pagedIntegrantes" (edit)="openEdit($event)" (delete)="onDelete($event)"></app-integrante-table>
+      <app-integrante-table [listIntegrantes]="pagedIntegrantes" [rowOffset]="(currentPage - 1) * pageSize"
+        (edit)="openEdit($event)" (delete)="onDelete($event)"></app-integrante-table>
     </div>
   </div>
   <div class="flex content-center items-center justify-center mt-6">
     <div class="join">
       @for (page of pagesArray; track page) {
-        <input class="join-item btn btn-square" type="radio" name="options"
-          [attr.aria-label]="page"
-          [checked]="currentPage === page"
-          (change)="currentPage = page" />
+      <input class="join-item btn btn-square" type="radio" name="options" [attr.aria-label]="page"
+        [checked]="currentPage === page" (change)="currentPage = page" />
       }
     </div>
   </div>
 
   <dialog #editModal class="modal">
-  <div class="modal-box max-w-3xl">
-    <h3 class="font-bold text-lg mb-4">Editar integrante</h3>
+    <div class="modal-box max-w-3xl">
+      <h3 class="font-bold text-lg mb-4">Editar integrante</h3>
 
-    <app-integrante-form
-      [integrante]="selectedIntegrante"
-      (save)="onUpdate($event)"
-      (cancel)="closeModal()">
-    </app-integrante-form>
+      <app-integrante-form [integrante]="selectedIntegrante" (save)="onUpdate($event)" (cancel)="closeModal()">
+      </app-integrante-form>
+    </div>
+  </dialog>
+  <div class="flex gap-3 md:gap-6 mt-3 md:mt-6 items-center justify-center">
+    <div class="bg-pink-200 shadow-md h-full p-4 rounded-lg flex items-center justify-center ">
+      <h2 class="">Chicas inscritas</h2>
+      <div class="ml-2 text-2xl font-bold text-pink-700">{{ chicas() }}</div>
+    </div>
+    <div class=" bg-blue-200 shadow-md h-full p-4 rounded-lg flex items-center justify-center">
+
+        <h2 class="">Varones inscritos</h2>
+        <div class="ml-2 text-2xl font-bold text-blue-700">{{ varones() }}</div>
+
+    </div>
   </div>
-</dialog>
-</div>
 
+</div>
