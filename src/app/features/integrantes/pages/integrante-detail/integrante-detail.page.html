@@ -8,7 +8,6 @@
     </button>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-4">
-
     <div
       class="col-span-1 card md:border border-base-300 md:shadow-md rounded-lg md:p-12 content-center items-center space-y-4">
       <div class="avatar">
@@ -47,11 +46,9 @@
       </div>
     </div>
 
-
-    <div class="col-span-1 md:p-6 px-6">
+    <div class="col-span-1 md:p-6 px-6 pb-6">
       <h2 class="text-xl font-bold mb-4">Detalles del Integrante</h2>
 
-      <!-- name of each tab group should be unique -->
       <div class="tabs tabs-lift">
         <input type="radio" name="my_tabs_3" class="tab" aria-label="Vestuario" checked="checked" />
         <div class="tab-content bg-base-100 border-base-300 p-6">
@@ -78,9 +75,16 @@
           }
           <h3 class="mt-4 font-bold text-lg">Observaciones</h3>
           <p>{{integrante()?.observaciones}}</p>
-
-
         </div>
+
+        @if (integrante()?.instrumento) {
+        <input type="radio" name="my_tabs_3" class="tab" aria-label="Musico" />
+        <div class="tab-content bg-base-100 border-base-300 p-6">
+          <h3 class="font-bold text-lg">Instrumento</h3>
+          <p> {{integrante()?.instrumento}} </p>
+          <h3 class="font-bold text-lg mt-4">Cobra</h3>
+          <p> {{integrante()?.musico_pagado ? 'Sí' : 'No'}} </p>
+        </div>}
 
         <input type="radio" name="my_tabs_3" class="tab" aria-label="Asistencia" />
         <div class="tab-content bg-base-100 border-base-300 p-6">
@@ -89,7 +93,6 @@
 
         <input type="radio" name="my_tabs_3" class="tab" aria-label="Pagos" />
         <div class="tab-content bg-base-100 border-base-300 p-6">
-
           <h3 class="text-lg font-bold mb-4">Historial de Pagos</h3>
           <div class="flex flex-col gap-4">
             <div class="stats shadow">
@@ -114,5 +117,5 @@
         </div>
       </div>
     </div>
-
   </div>
+</div>

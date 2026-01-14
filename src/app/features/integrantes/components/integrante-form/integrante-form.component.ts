@@ -114,7 +114,7 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
 
   get mostrarMusico() {
     const rol = this.form.get('rol')?.value;
-    return !this.esMujer && rol !== 'Capitan' && rol !== 'Chilquino';
+    return rol === 'Músico';
   }
 
   get mostrarAlquiler() {
