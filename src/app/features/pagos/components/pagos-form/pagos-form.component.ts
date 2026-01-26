@@ -49,6 +49,7 @@ export class PagosFormComponent implements OnInit, OnChanges {
         this.form.reset();
         this.form.patchValue({
           ...data,
+          metodoPago: data.metodoPago ?? 'Efectivo',
           observaciones: data.observacion ?? '',
         });
       } else {

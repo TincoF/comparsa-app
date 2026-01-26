@@ -49,6 +49,7 @@ export class PagosService {
         concepto: p.concepto,
         fecha: p.fecha,
         observacion: p.observacion,
+        metodoPago: p.metodo_pago ?? 'Efectivo',
       })),
     );
   }
@@ -80,6 +81,7 @@ export class PagosService {
       concepto: pagoConId.concepto,
       fecha: pagoConId.fecha,
       observacion: pagoConId.observacion ?? null,
+      metodo_pago: pagoConId.metodoPago ?? null,
     });
 
     if (error) {
@@ -108,6 +110,7 @@ export class PagosService {
         concepto: data.concepto,
         fecha: data.fecha,
         observacion: data.observacion ?? null,
+        metodo_pago: data.metodoPago ?? null,
       })
       .eq('id', data.id);
 
