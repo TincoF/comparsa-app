@@ -19,6 +19,13 @@ export const routes: Routes = [
           import('./features/integrantes/integrantes.routes')
             .then(m => m.INTEGRANTES_ROUTES),
       },
+       {
+        path: 'pagos',
+        loadChildren: () =>
+          import('./features/pagos/pagos.routes')
+            .then(m => m.PAGOS_ROUTES),
+      },
+
     ],
   },
 

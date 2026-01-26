@@ -1,0 +1,43 @@
+<div class="p-4 max-w-7xl mx-auto">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Pagos</h1>
+    <a href="/pagos/nuevo" class="btn btn-primary"> + Nuevo pago </a>
+  </div>
+  <div class="overflow-x-auto bg-base-100 rounded-xl shadow">
+    <div class="overflow-x-auto">
+      <app-pagos-table
+        [listPagos]="pagedPagos"
+        [integrantes]="integrantes()"
+        (edit)="onEditPago($event)"
+        (delete)="onDeletePago($event)"
+      ></app-pagos-table>
+    </div>
+  </div>
+  <div class="flex content-center items-center justify-center mt-6">
+    <div class="join">
+      @for (page of pagesArray; track page) {
+      <input
+        class="join-item btn btn-square"
+        type="radio"
+        name="options"
+        [attr.aria-label]="page"
+        [checked]="currentPage === page"
+        (change)="currentPage = page"
+      />
+      }
+    </div>
+  </div>
+
+  <dialog #editModal class="modal">
+    <div class="modal-box max-w-3xl">
+      <h3 class="font-bold text-lg mb-4">Editar pagos</h3>
+
+      <app-pagos-form
+        [pago]="selectedPago"
+        (save)="guardar($event)"
+        (cancel)="cancelar()"
+      >
+      </app-pagos-form>
+    </div>
+  </dialog>
+</div>

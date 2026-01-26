@@ -9,7 +9,6 @@ export class CumpleanosCortoPipe implements PipeTransform {
 
   transform(value: string | null | undefined): string {
     if (!value || value.length < 7) return '';
-    // value esperado: YYYY-MM-DD
     let mes = '', dia = '';
     if (value.includes('-')) {
       const parts = value.split('-');

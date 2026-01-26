@@ -8,7 +8,13 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-integrante-table',
-  imports: [CommonModule, AvatarIntegrantePipe, RolBadgePipe, CumpleanosCortoPipe, RouterLink],
+  imports: [
+    CommonModule,
+    AvatarIntegrantePipe,
+    RolBadgePipe,
+    CumpleanosCortoPipe,
+    RouterLink,
+  ],
   templateUrl: './integrante-table.component.html',
 })
 export class IntegranteTable {

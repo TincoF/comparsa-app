@@ -1,5 +1,3 @@
-import { Integrante } from "./integrante.model";
-
 export interface Alquiler {
   garante: string | null;
   dni: string;

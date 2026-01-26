@@ -1,6 +1,20 @@
-import { input, output, Component, effect, OnInit, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  input,
+  output,
+  Component,
+  effect,
+  OnInit,
+  ChangeDetectorRef,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Integrante } from '../../models/integrante.model';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-integrante-form',
@@ -9,20 +23,22 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './integrante-form.component.html',
 })
 export class IntegranteFormComponent implements OnInit, OnChanges {
-
   integrante = input<Integrante | null>(null);
   save = output<Integrante>();
   cancel = output<void>();
 
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
     this.buildForm();
     this.handleSexo();
     this.handleRol();
-    this.form.get('sexo')?.valueChanges.subscribe(sexo => {
+    this.form.get('sexo')?.valueChanges.subscribe((sexo) => {
       if (sexo === 'F') {
         this.form.get('rol')?.setValue('Bailarina');
       } else if (sexo === 'M') {
@@ -76,29 +92,29 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
         garante: [''],
         dni: [''],
         direccion: [''],
-        detalles: ['']
-      })
+        detalles: [''],
+      }),
     });
   }
 
   private handleSexo() {
-    this.form.get('sexo')?.valueChanges.subscribe(sexo => {
+    this.form.get('sexo')?.valueChanges.subscribe((sexo) => {
       if (sexo === 'F') {
         this.form.patchValue({
           rol: 'Bailarina',
           instrumento: null,
-          musico_pagado: null
+          musico_pagado: null,
         });
       }
     });
   }
 
   private handleRol() {
-    this.form.get('rol')?.valueChanges.subscribe(rol => {
+    this.form.get('rol')?.valueChanges.subscribe((rol) => {
       if (rol === 'Capitan' || rol === 'Chilquino') {
         this.form.patchValue({
           instrumento: null,
-          musico_pagado: null
+          musico_pagado: null,
         });
       }
     });
@@ -128,22 +144,21 @@ export class IntegranteFormComponent implements OnInit, OnChanges {
     return this.esVaron;
   }
 
-submit() {
-  if (this.form.invalid) return;
-  if (this.form.get('sexo')?.value === 'placeholder') {
-    return;
+  submit() {
+    if (this.form.invalid) return;
+    if (this.form.get('sexo')?.value === 'placeholder') {
+      return;
+    }
+    const raw = this.form.value;
+    const data: Integrante = {
+      ...(this.integrante() ?? {}),
+      ...raw,
+      socio: raw.socio === true || raw.socio === 'si',
+      musico_pagado: raw.musico_pagado === true || raw.musico_pagado === 'si',
+      alquiler: raw.alquila_vestuario ? raw.alquiler : null,
+    };
+    this.save.emit(data);
   }
-  const raw = this.form.value;
-  // Guardar cumpleaños como YYYY-MM-DD (sin recortar)
-  const data: Integrante = {
-    ...(this.integrante() ?? {}),
-    ...raw,
-    socio: raw.socio === true || raw.socio === 'si',
-    musico_pagado: raw.musico_pagado === true || raw.musico_pagado === 'si',
-    alquiler: raw.alquila_vestuario ? raw.alquiler : null,
-  };
-  this.save.emit(data);
-}
 
   cancelar() {
     this.cancel.emit();

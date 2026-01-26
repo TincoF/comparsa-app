@@ -18,5 +18,6 @@ export const INTEGRANTES_ROUTES: Routes = [
     loadComponent: () =>
       import('./pages/integrante-detail/integrante-detail.page')
         .then(m => m.default),
+
   },
 ];

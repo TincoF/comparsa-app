@@ -1,75 +1,72 @@
 <div class="gap-4 max-w-6xl mx-auto md:mt-8 p-4 md:p-0">
-
   <div class="card bg-neutral shadow-sm mb-3 md:mb-6 w-full">
     <div class="flex flex-col lg:flex-row">
-      <!-- Imagen -->
       <figure class="lg:w-1/2 w-full">
-        <img src="/img/pareja.png" alt="Album" class="md:h-96 h-80 object-contain p-10" />
+        <img
+          src="/img/pareja.png"
+          alt="Album"
+          class="md:h-96 h-80 object-contain p-10"
+        />
       </figure>
-
-      <!-- Contenido -->
-      <div class="lg:w-1/2 w-full flex flex-col justify-center items-center text-center gap-3 p-8 pt-0">
-        <img class="h-28" src="/img/logoRojo.svg" alt="">
-
-
-        <a href="/integrantes/nuevo" class="btn btn-primary mt-2">Nuevo Integrante</a>
+      <div
+        class="lg:w-1/2 w-full flex flex-col justify-center items-center text-center gap-3 p-8 pt-0"
+      >
+        <img class="h-28" src="/img/logoRojo.svg" alt="" />
+        <a href="/integrantes/nuevo" class="btn btn-primary mt-2"
+          >Nuevo Integrante</a
+        >
       </div>
     </div>
   </div>
-<div class="hidden md:block">
-  <div class="grid-cols-1 md:grid-cols-3 gap-6 grid">
-    <div class="card lg:card-side bg-info shadow-sm">
-      <div class="card-body items-center text-center">
-        <h2 class="card-title">Integrantes</h2>
-        <p>
-          Administra la lista de bailarines y músicos. <br />
-          Registra y organiza a los integrantes. <br />
-          Consulta, agrega o edita integrantes.
-        </p>
-        <div class="card-actions justify-end">
-          <a href="/integrantes" class="btn btn-soft">Ver Integrantes</a>
+  <div class="hidden md:block">
+    <div class="grid-cols-1 md:grid-cols-3 gap-6 grid">
+      <div class="card lg:card-side bg-info shadow-sm">
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">Integrantes</h2>
+          <p>
+            Administra la lista de bailarines y músicos. <br />
+            Registra y organiza a los integrantes. <br />
+            Consulta, agrega o edita integrantes.
+          </p>
+          <div class="card-actions justify-end">
+            <a href="/integrantes" class="btn btn-soft">Ver Integrantes</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card lg:card-side bg-warning shadow-sm">
-      <div class="card-body items-center text-center">
-        <h2 class="card-title">Pagos</h2>
-        <p>
-          Controla cuotas, inscripciones y vestuario. <br />
-          Registra pagos parciales y pendientes. <br />
-          Consulta el estado de pagos por integrante.
-        </p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-soft">Aportes</button>
+      <div class="card lg:card-side bg-warning shadow-sm">
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">Pagos</h2>
+          <p>
+            Controla cuotas, inscripciones y vestuario. <br />
+            Registra pagos parciales y pendientes. <br />
+            Consulta el estado de pagos por integrante.
+          </p>
+          <div class="card-actions justify-end">
+            <a href="/pagos" class="btn btn-soft">Aportes</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card lg:card-side bg-success shadow-sm">
-      <div class="card-body items-center text-center">
-        <h2 class="card-title">Asistencia</h2>
-        <p>
-          Pasa lista en ensayos y presentaciones. <br />
-          Consulta la asistencia por fecha. <br />
-          Control rápido de presencia.
-        </p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-soft">Pasar lista</button>
+      <div class="card lg:card-side bg-success shadow-sm">
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">Asistencia</h2>
+          <p>
+            Pasa lista en ensayos y presentaciones. <br />
+            Consulta la asistencia por fecha. <br />
+            Control rápido de presencia.
+          </p>
+          <div class="card-actions justify-end">
+            <a href="/asistencias" class="btn btn-soft">Pasar lista</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="block md:hidden ">
-  <div class="flex flex-col gap-2">
-
-    <a href="/integrantes" class="btn btn-info">Ver Integrantes</a>
-    <button class="btn btn-success">Aportes</button>
-    <button class="btn btn-accent">Pasar lista</button>
-
+  <div class="block md:hidden">
+    <div class="flex flex-col gap-2">
+      <a href="/integrantes" class="btn btn-info">Ver Integrantes</a>
+      <a href="/pagos" class="btn btn-success">Aportes</a>
+      <a href="/asistencias" class="btn btn-accent">Pasar lista</a>
+    </div>
   </div>
-</div>
-
-
-
 </div>

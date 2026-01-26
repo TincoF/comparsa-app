@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { IntegrantesService } from '../../../integrantes/services/integrantes.service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-dashboard.page',

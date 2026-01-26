@@ -9,11 +9,9 @@ import FooterComponent from './footer/footer.component';
   template: `
     <div class="min-h-screen flex flex-col">
       <app-header />
-
       <main class="flex-1 md:p-4">
         <router-outlet />
       </main>
-
       <app-footer />
     </div>
   `,

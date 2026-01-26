@@ -1,7 +1,7 @@
-import { Asistencia } from './asistencia.model';
+import { AsistenciaDia } from './asistencia.model';
 import { Talla } from './talla.model';
-import { Pago } from './pago.model';
 import { Alquiler } from './alquiler.model';
+import { Pago } from './pago.model';
 
 export interface Integrante {
   id: string;
@@ -14,12 +14,12 @@ export interface Integrante {
   cumpleanos?: string | null;
   foto?: string;
 
-  instrumento?: 'Quena'|'Guitarra'|'Tinya'|'Otro'|null;
+  instrumento?: 'Quena' | 'Guitarra' | 'Tinya' | 'Otro' | null;
   musico_pagado?: boolean | null;
 
   tallas: Talla;
 
-  asistencia?: Asistencia[] | null;
+  asistencia?: AsistenciaDia[] | null;
 
   pagos?: Pago[];
 
@@ -28,5 +28,4 @@ export interface Integrante {
   alquiler?: Alquiler | null;
 
   observaciones?: string | null;
-
 }

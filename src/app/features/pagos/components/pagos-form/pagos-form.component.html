@@ -1,0 +1,67 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="card bg-white shadow-md">
+    <div class="card-body gap-6">
+    <div>
+      <h2 class="font-semibold mb-3">Integrante</h2>
+      <select
+        class="select select-bordered w-full"
+        formControlName="integranteId"
+      >
+        <option value="" disabled>Selecciona un integrante</option>
+        @for (i of integrantesSignal(); track $index) {
+          <option [value]="i.id">{{ i.nombres }} {{ i.apellidos }}</option>
+        }
+      </select>
+    </div>
+    <div>
+      <h2 class="font-semibold mb-3">Detalles del pago</h2>
+      <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+        <input
+          type="number"
+          class="input input-bordered w-full"
+          placeholder="Monto"
+          formControlName="monto"
+        />
+        <input
+          type="date"
+          class="input input-bordered w-full"
+          placeholder="Fecha"
+          formControlName="fecha"
+        />
+        <input
+          type="text"
+          class="input input-bordered w-full"
+          placeholder="Concepto"
+          formControlName="concepto"
+        />
+        <select
+          class="select select-bordered w-full"
+          formControlName="metodoPago"
+        >
+          <option value="Efectivo">Efectivo</option>
+          <option value="Transferencia">Transferencia</option>
+          <option value="Yape">Yape</option>
+          <option value="Plin">Plin</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <h2 class="font-semibold mb-3">Observaciones</h2>
+      <div class="">
+        <textarea
+          placeholder="Observaciones"
+          class="input input-bordered w-full textarea"
+          formControlName="observaciones"
+        ></textarea>
+      </div>
+    </div>
+    <div class="card-actions justify-end mt-4">
+      <button class="btn btn-neutral" type="button" (click)="cancelar()">
+        Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit">Guardar pago</button>
+    </div>
+  </div>
+  </div>
+</form>
