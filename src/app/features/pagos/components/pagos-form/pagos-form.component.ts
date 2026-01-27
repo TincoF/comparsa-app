@@ -32,6 +32,14 @@ export class PagosFormComponent implements OnInit, OnChanges {
   integrantesService = new IntegrantesService();
   integrantesSignal = this.integrantesService.getAll();
 
+  get integrantesOrdenados() {
+    return [...this.integrantesSignal()].sort((a, b) => {
+      const nombreA = `${a.nombres} ${a.apellidos}`.toLowerCase();
+      const nombreB = `${b.nombres} ${b.apellidos}`.toLowerCase();
+      return nombreA.localeCompare(nombreB);
+    });
+  }
+
   constructor(
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,

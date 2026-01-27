@@ -8,7 +8,7 @@
         formControlName="integranteId"
       >
         <option value="" disabled>Selecciona un integrante</option>
-        @for (i of integrantesSignal(); track $index) {
+        @for (i of integrantesOrdenados; track i.id) {
           <option [value]="i.id">{{ i.nombres }} {{ i.apellidos }}</option>
         }
       </select>
